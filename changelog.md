@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.0 (Current)
+- **Project Cleanup**: Removed unused scripts (`generate_clean_maingui.py`, `fix_syntax.py`) and directories (`tauri-app`).
+- **Release Preparation**: Added `README.md` and `.gitignore`.
+- **Stability**: Improved `Launch-Coursera-Helper.bat` to robustly handle virtual environments and administrator privileges.
+- **Code Organization**: Verified and cleaned up project structure.
+
 ## v3.0.1
 - Updated maingui so that interface does not break on high dpi display
 

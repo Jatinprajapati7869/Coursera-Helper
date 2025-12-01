@@ -10,18 +10,21 @@ echo ========================================
 echo.
 
 :: Check for admin rights
+:: Check for admin rights
 net session >nul 2>&1
 if %errorLevel% == 0 (
     echo [OK] Running as administrator
     echo [*] Starting Coursera Helper...
     echo.
     cd /d "%~dp0"
-    call venv\Scripts\activate
+    if exist "venv\Scripts\activate.bat" (
+        call venv\Scripts\activate
+    )
     python run.py
     pause
 ) else (
     echo [!] Not running as administrator
     echo [*] Requesting administrator privileges...
     echo.
-    powershell -Command "Start-Process cmd -ArgumentList '/c cd /d \"%~dp0\" && call venv\\Scripts\\activate && python run.py && pause' -Verb RunAs"
+    powershell -Command "Start-Process cmd -ArgumentList '/c cd /d \"%~dp0\" && if exist venv\\Scripts\\activate.bat (call venv\\Scripts\\activate) && python run.py && pause' -Verb RunAs"
 )
